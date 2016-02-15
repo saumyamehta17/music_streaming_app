@@ -1,0 +1,17 @@
+<h2>Upload a new song</h2>
+<%= form_tag songs_upload_path, method: :post, multipart: true do %>
+	<%= file_field_tag 'mp3' %>
+	<%= submit_tag 'upload' %>
+<% end %>
+
+<br/>
+<h2>Delete/Download existing Songs</h2>
+<table>
+<%= @songs.each do |song| %>
+  <tr>
+  <td><%= song.key %> </td>
+  <td><%= link_to 'Download' %></td>
+  <td><%= link_to 'Torrent' %></td>
+  <td><%= link_to 'Delete', songs_delete_path(song.key),method: :delete, confirm: 'Are u sure?' %></td>
+  </tr>
+<% end %>
